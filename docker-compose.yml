@@ -1,0 +1,36 @@
+#version: '3.8'
+#
+#services:
+#  db:
+#    image: postgres:latest
+#    container_name: postgres_db
+#    environment:
+#      POSTGRES_USER: demo
+#      POSTGRES_PASSWORD: demo
+#      POSTGRES_DB: demo
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#
+#volumes:
+#  pgdata:
+
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demo
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+volumes:
+  mysqldata:

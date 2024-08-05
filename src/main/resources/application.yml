@@ -1,0 +1,67 @@
+server:
+  port: 8080
+#  error:
+#    include-stacktrace: NEVER
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+  application:
+    name: test
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://127.0.0.1:5432/demo?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false
+#    username: demo
+#    password: demo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: demo
+    password: demo
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        format_sql: true
+#        default_batch_fetch_size: 1000
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  hibernate:
+    format-sql: true
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    default-batch-fetch-size: 500
+
+token:
+  expiration_time: 864000000
+  secret: user_token_native_user_service_default
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework.cloud.config: DEBUG
+    web: debug
+    cache: debug
+    bootstrap: trace
+    org:
+      hibernate:
+        orm:
+          query: WARN
+          results: WARN
+    org.springframework:
+      security.oauth2.provider.endpoint: WARN
+      data: DEBUG
+      web:
+        servlet.handler: info
+        filter.CommonsRequestLoggingFilter: debug
+      security: debug
+    redis.clients: DEBUG
+
+
+
+
